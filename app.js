@@ -46,7 +46,7 @@ class User {
         this.email = email
         this.age = age
         this.password = password
-        this.balance = 1000
+        this.balance = 0
     }
 }
 
@@ -156,9 +156,30 @@ if (askUser.toLowerCase() === "sign up") {
 
     alert("Account created successfully")
 }
+let askUserv3 = prompt("Log In || Sign Up || Reset Password")
+
+if (askUserv3.toLowerCase() === "reset password") {
+    let verify = prompt("Enter your email to change your password")
+    let reset = users.find(u => u.email === verify)
+
+    if (reset) {
+
+        let newPassword = null
+        while (newPassword === null) {
+            newPassword = validatePassword(prompt("Enter your new password"))
+        }
+
+        reset.password = newPassword
+        alert("Password changed !!!")
+    } else {
+        alert("We can't find your email")
+    }
+}
+
+
 let askUserv2 = prompt("Log In || Sign Up || Reset Password")
 
-if (askUserv2 && askUserv2.toLowerCase() === "log in") {
+if (askUserv2.toLowerCase() === "log in") {
 
     let loggedInUser = null
 
@@ -174,9 +195,8 @@ if (askUserv2 && askUserv2.toLowerCase() === "log in") {
             alert(`Mar7ba bik ${loggedInUser.fullname} !!!`)
         }
     }
-
-    
-    alert(`This is your Balance in your account 1000 DH`)
+    alert(`This is your Balance in your account 0$`)
+    let choose = prompt("choose what do you want :\n Withdraw Money\n Deposit Money\n Take a loan\n Invest\n")
 
 }
 
