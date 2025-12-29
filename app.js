@@ -7,7 +7,7 @@
 //     if (fullname.length < 5) {
 //          alert("your name is incorrect , try again")
 //     }
-    
+
 //     else if (special.test(fullname)){
 //         alert("your name is incorrect , try again")
 //     }
@@ -38,83 +38,146 @@
 
 let users = []
 
-let special = /[^a-zA-Z\s]/ 
+let special = /[^a-zA-Z\s]/
 
 class User {
-  constructor(fullname , email, age) {
-    this.fullname = fullname
-    this.email = email
-    this.age = age
-  }
+    constructor(fullname, email, age, password) {
+        this.fullname = fullname
+        this.email = email
+        this.age = age
+        this.password = password
+        this.balance = 1000
+    }
 }
 
 
-function capitalizeName(name) {
-  return name.split(" ").map(word => word.charAt(0).toUpperCase() + word.slice(1).toLowerCase()).join(" ")
-}
+// function capitalizeName(name) {
+//     return name.split(" ").map(word => word.charAt(0).toUpperCase() + word.slice(1).toLowerCase()).join(" ")
+// }
 
-// Validate full name
-function validateFullName(name) {
-  name = name.trim()
+// // Validate full name
+// function validateFullName(name) {
+//     name = name.trim()
 
-  if (name.length < 5) {
-    alert("your name is incorrect , try again")
-    return null
-  }
+//     if (name.length < 5) {
+//         alert("your name is incorrect , try again")
+//         return null
+//     }
 
-  if (special.test(name)) {
-    alert("your name is incorrect , try again")
-    return null
-  }
+//     if (special.test(name)) {
+//         alert("your name is incorrect , try again")
+//         return null
+//     }
 
-  return capitalizeName(name)
-}
+//     return capitalizeName(name)
+// }
 
-// Validate email
-function validateEmail(email) {
-  email = email.trim().toLowerCase()
+// // Validate email
+// function validateEmail(email) {
+//     email = email.trim().toLowerCase()
 
-   if (email.length < 10) {
-    alert("your email is incorrect , try again")
-    return null
-  }
-    if (!email.includes("@")) {
-      alert("your email is incorrect , try again")
-  }
-}
-
-// Validate Age
-function containsOnlyDigits(str) {
-  if (str.length === 0) return false;
-  return str.split('').every(char => char >= '0' && char <= '9');
-}
-function validateEmail(age) {
-  age = age.trim()
-}
+//     if (email.length < 10) {
+//         alert("your email is incorrect , try again")
+//         return null
+//     }
+//     if (!email.includes("@")) {
+//         alert("your email is incorrect , try again")
+//         return null
+//     }
+//     return email
+// }
 
 
 
+// // Validate Age
+// function validateAge(age) {
+//     age = age.trim()
+//     if (age.length == 0 || age.length > 3) {
+//         alert("your age is incorrect , try again")
+//     }
+//     if (!/^[0-9]+$/.test(age)) {
+//         alert("your age is incorrect , try again")
+//         return null
+//     }
+//     return Number(age)
+// }
 
-let askUser = prompt("Log In || Sign Up || Reset Password")
+// // Validate Password
+// function validatePassword(password) {
+//     password = password.trim()
 
-if (askUser.toLowerCase() === "sign up") {
-  let checkFullName = prompt("What is your Full Name")
+//     if (password.length < 7) {
+//         alert("your password is incorrect , try again")
+//     }
+//     if (!/[@#\-+*/]/.test(password)) {
+//         alert("your password is incorrect , try again")
+//         return null
+//     }
+//     return password
+// }
 
-  let validName = validateFullName(checkFullName)
 
-  if (validName != null) {
-    let newUser = new User(validName)
-    users.push(newUser)
-    alert("Your Name is successfully")
-  }
-  let checkEmail = prompt("What is your Email")
-  let validEmail = validateEmail(checkEmail)
-   if (validEmail != null) {
-    let newEmail = new User(validEmail)
-    users.push(newEmail)
-    alert("Your Name is successfully")
-  }
-}
-console.log(users)
 
+// //
+// // .............
+// let askUser = prompt("Log In || Sign Up || Reset Password")
+
+// if (askUser.toLowerCase() === "sign up") {
+
+
+
+//     let fullName = null
+//     while (fullName === null) {
+//         fullName = validateFullName(prompt("Full Name"))
+//     }
+
+//     let email = null
+//     while (email === null) {
+//         email = validateEmail(prompt("Email"))
+//     }
+
+//     let age = null
+//     while (age === null) {
+//         age = validateAge(prompt("Age"))
+//     }
+
+//     let password = null
+//     while (password === null) {
+//         password = validatePassword(prompt("Password"))
+//     }
+//     let confirm = prompt("Confirm Password")
+//     while (confirm !== password) {
+//         confirm = prompt("Password not match, try again")
+//         break
+//     }
+
+//     let newUser = new User(fullName, email, age, password)
+//     users.push(newUser)
+
+//     alert("Account created successfully")
+// }
+// let askUserv2 = prompt("Log In || Sign Up || Reset Password")
+
+// if (askUserv2 && askUserv2.toLowerCase() === "log in") {
+
+  
+
+//    let loggedInUser = null
+
+// while (!loggedInUser) {
+//     let checkEmail = prompt("Enter your email")
+//     let checkPassword = prompt("Enter your password")
+
+//     loggedInUser = users.find(user => user.email === checkEmail && user.password === checkPassword)
+
+//     if (!loggedInUser) {
+//       alert("Email or password not correct, try again")
+//     }
+//     else{
+//         alert(`Mar7ba bik ${loggedInUser.fullname} !!!`)
+//     }
+// }
+// let seebank = prompt("")
+
+// }
 
