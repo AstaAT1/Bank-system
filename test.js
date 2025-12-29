@@ -71,3 +71,11 @@ else if(ask == 'No'){
 }
 }
 }
+else if (action === "invest") {
+            let invest = Number(prompt("How much do you want to invest?"))
+            if (!isNaN(invest) && invest > 0 && invest <= loggedInUser.balance) {
+                loggedInUser.balance -= invest
+                alert(`Investment successful! ${invest} DH invested. Remaining balance: ${loggedInUser.balance} DH`)
+            } else {
+                alert("Invalid investment amount.")
+            }

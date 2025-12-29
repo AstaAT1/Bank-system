@@ -142,7 +142,7 @@ if (askUserv3.toLowerCase() == "reset password") {
 
 let askUserv2 = prompt("Log In || Sign Up || Reset Password")
 
-if (askUserv2.toLowerCase() == "log in") {
+if (askUserv2.toLowerCase() === "log in") {
 
     let loggedInUser = null
 
@@ -150,7 +150,7 @@ if (askUserv2.toLowerCase() == "log in") {
         let checkEmail = prompt("Enter your email").trim().toLowerCase()
         let checkPassword = prompt("Enter your password").trim()
 
-        loggedInUser = users.find(user => user.email == checkEmail && user.password == checkPassword)
+        loggedInUser = users.find(user => user.email === checkEmail && user.password === checkPassword)
 
         if (!loggedInUser) {
             alert("Email or password not correct, try again")
@@ -158,19 +158,41 @@ if (askUserv2.toLowerCase() == "log in") {
             alert(`Mar7ba bik ${loggedInUser.fullname} !!!`)
         }
     }
-    alert(`This is your Balance in your account: ${loggedInUser.balance} DH`)
 
-let choose = prompt("Choose what do you want:\nDeposit Money\nWithdraw Money\nTake a loan\nInvest\n")
+    let action = " "
+    while (action != "logout") {
+        action = prompt(`Your balance: ${loggedInUser.balance} DH\nChoose what do you want:\nDeposit\nWithdraw\nTake loan\nInvest\nLogout`).toLowerCase()
 
-if (choose.toLowerCase() === "deposit money") {
-    let pushmoney = prompt("How much money do you want to deposit?")
-
-    if (!isNaN(pushmoney) && pushmoney > 0) {
-        loggedInUser.balance = loggedInUser.balance + pushmoney
-        alert(`Deposit successful !!! Your new balance is: ${loggedInUser.balance} $`)
-    } else {
-        alert("Invalid , try again.")
+        if (action == "deposit") {
+            let pushmoney = Number(prompt("How much money do you want to deposit?"))
+            if (!isNaN(pushmoney) && pushmoney > 0 ) {
+                loggedInUser.balance += pushmoney
+                alert(`Deposit successful!!! New balance: ${loggedInUser.balance} DH`)
+            } else {
+                alert("Invalid , try again")
+            }
+        } else if (action == "withdraw") {
+            let withdraw = Number(prompt("How much money do you want to withdraw?"))
+            if (!isNaN(withdraw) && withdraw > 0 && withdraw <= loggedInUser.balance) {
+                loggedInUser.balance -= withdraw
+                alert(`Withdraw successful! New balance: ${loggedInUser.balance} DH`)
+            } else {
+                alert("Invalid , try later")
+            }
+        } else if (action === "take loan") {
+            let loan = Number(prompt("How much loan do you want? You can take up to 20% of your balance"))
+            let maxLoan = loggedInUser.balance * 0.2
+            if (!isNaN(loan) && loan > 0 && loan <= maxLoan) {
+                loggedInUser.balance += loan
+                alert(`Loan approved! New balance: ${loggedInUser.balance} DH`)
+            } else {
+                alert("Naaaaaah you can't")
+            }
+        } else if (action === "logout") {
+            alert("You logged out , Nchofok mara jaya!")
+        } else {
+            alert("Action not found, try again")
+        }
     }
-}
 }
 
