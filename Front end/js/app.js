@@ -188,7 +188,11 @@ if (askUserv2.toLowerCase() === "log in") {
             } else {
                 alert("Naaaaaah you can't")
             }
-        } else if (action === "logout") {
+        }else if (action === "invest") {
+            alert("sorry this action is not active now")
+        }
+
+         else if (action === "logout") {
             alert("You logged out , Nchofok mara jaya!")
         } else {
             alert("Action not found, try again")
