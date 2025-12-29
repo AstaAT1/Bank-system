@@ -51,133 +51,132 @@ class User {
 }
 
 
-// function capitalizeName(name) {
-//     return name.split(" ").map(word => word.charAt(0).toUpperCase() + word.slice(1).toLowerCase()).join(" ")
-// }
+function capitalizeName(name) {
+    return name.split(" ").map(word => word.charAt(0).toUpperCase() + word.slice(1).toLowerCase()).join(" ")
+}
 
-// // Validate full name
-// function validateFullName(name) {
-//     name = name.trim()
+// Validate full name
+function validateFullName(name) {
+    name = name.trim()
 
-//     if (name.length < 5) {
-//         alert("your name is incorrect , try again")
-//         return null
-//     }
+    if (name.length < 5) {
+        alert("your name is incorrect , try again")
+        return null
+    }
 
-//     if (special.test(name)) {
-//         alert("your name is incorrect , try again")
-//         return null
-//     }
+    if (special.test(name)) {
+        alert("your name is incorrect , try again")
+        return null
+    }
 
-//     return capitalizeName(name)
-// }
+    return capitalizeName(name)
+}
 
-// // Validate email
-// function validateEmail(email) {
-//     email = email.trim().toLowerCase()
+// Validate email
+function validateEmail(email) {
+    email = email.trim().toLowerCase()
 
-//     if (email.length < 10) {
-//         alert("your email is incorrect , try again")
-//         return null
-//     }
-//     if (!email.includes("@")) {
-//         alert("your email is incorrect , try again")
-//         return null
-//     }
-//     return email
-// }
-
-
-
-// // Validate Age
-// function validateAge(age) {
-//     age = age.trim()
-//     if (age.length == 0 || age.length > 3) {
-//         alert("your age is incorrect , try again")
-//     }
-//     if (!/^[0-9]+$/.test(age)) {
-//         alert("your age is incorrect , try again")
-//         return null
-//     }
-//     return Number(age)
-// }
-
-// // Validate Password
-// function validatePassword(password) {
-//     password = password.trim()
-
-//     if (password.length < 7) {
-//         alert("your password is incorrect , try again")
-//     }
-//     if (!/[@#\-+*/]/.test(password)) {
-//         alert("your password is incorrect , try again")
-//         return null
-//     }
-//     return password
-// }
+    if (email.length < 10) {
+        alert("your email is incorrect , try again")
+        return null
+    }
+    if (!email.includes("@")) {
+        alert("your email is incorrect , try again")
+        return null
+    }
+    return email
+}
 
 
 
-// //
-// // .............
-// let askUser = prompt("Log In || Sign Up || Reset Password")
+// Validate Age
+function validateAge(age) {
+    age = age.trim()
+    if (age.length == 0 || age.length > 3) {
+        alert("your age is incorrect , try again")
+    }
+    if (!/^[0-9]+$/.test(age)) {
+        alert("your age is incorrect , try again")
+        return null
+    }
+    return Number(age)
+}
 
-// if (askUser.toLowerCase() === "sign up") {
+// Validate Password
+function validatePassword(password) {
+    password = password.trim()
+
+    if (password.length < 7) {
+        alert("your password is incorrect , try again")
+    }
+    if (!/[@#\-+*/]/.test(password)) {
+        alert("your password is incorrect , try again")
+        return null
+    }
+    return password
+}
 
 
 
-//     let fullName = null
-//     while (fullName === null) {
-//         fullName = validateFullName(prompt("Full Name"))
-//     }
+//
+// .............
+let askUser = prompt("Log In || Sign Up || Reset Password")
 
-//     let email = null
-//     while (email === null) {
-//         email = validateEmail(prompt("Email"))
-//     }
+if (askUser.toLowerCase() === "sign up") {
 
-//     let age = null
-//     while (age === null) {
-//         age = validateAge(prompt("Age"))
-//     }
 
-//     let password = null
-//     while (password === null) {
-//         password = validatePassword(prompt("Password"))
-//     }
-//     let confirm = prompt("Confirm Password")
-//     while (confirm !== password) {
-//         confirm = prompt("Password not match, try again")
-//         break
-//     }
 
-//     let newUser = new User(fullName, email, age, password)
-//     users.push(newUser)
+    let fullName = null
+    while (fullName === null) {
+        fullName = validateFullName(prompt("Full Name"))
+    }
 
-//     alert("Account created successfully")
-// }
-// let askUserv2 = prompt("Log In || Sign Up || Reset Password")
+    let email = null
+    while (email === null) {
+        email = validateEmail(prompt("Email"))
+    }
 
-// if (askUserv2 && askUserv2.toLowerCase() === "log in") {
+    let age = null
+    while (age === null) {
+        age = validateAge(prompt("Age"))
+    }
 
-  
+    let password = null
+    while (password === null) {
+        password = validatePassword(prompt("Password"))
+    }
+    let confirm = prompt("Confirm Password")
+    while (confirm !== password) {
+        confirm = prompt("Password not match, try again")
+        break
+    }
 
-//    let loggedInUser = null
+    let newUser = new User(fullName, email, age, password)
+    users.push(newUser)
 
-// while (!loggedInUser) {
-//     let checkEmail = prompt("Enter your email")
-//     let checkPassword = prompt("Enter your password")
+    alert("Account created successfully")
+}
+let askUserv2 = prompt("Log In || Sign Up || Reset Password")
 
-//     loggedInUser = users.find(user => user.email === checkEmail && user.password === checkPassword)
+if (askUserv2 && askUserv2.toLowerCase() === "log in") {
 
-//     if (!loggedInUser) {
-//       alert("Email or password not correct, try again")
-//     }
-//     else{
-//         alert(`Mar7ba bik ${loggedInUser.fullname} !!!`)
-//     }
-// }
-// let seebank = prompt("")
+    let loggedInUser = null
 
-// }
+    while (!loggedInUser) {
+        let checkEmail = prompt("Enter your email").trim().toLowerCase()
+        let checkPassword = prompt("Enter your password").trim()
+
+        loggedInUser = users.find(user => user.email === checkEmail && user.password === checkPassword)
+
+        if (!loggedInUser) {
+            alert("Email or password not correct, try again")
+        } else {
+            alert(`Mar7ba bik ${loggedInUser.fullname} !!!`)
+        }
+    }
+
+    
+    alert(`This is your Balance in your account 1000 DH`)
+
+}
 
