@@ -9,7 +9,7 @@ class User {
         this.email = email
         this.age = age
         this.password = password
-        this.balance = 0
+        this.balance = "0"
     }
 }
 
@@ -163,13 +163,13 @@ if (askUserv2.toLowerCase() == "log in") {
 let choose = prompt("Choose what do you want:\nDeposit Money\nWithdraw Money\nTake a loan\nInvest\n")
 
 if (choose.toLowerCase() === "deposit money") {
-    let pushmoney = Number(prompt("How much money do you want to deposit?"))
+    let pushmoney = prompt("How much money do you want to deposit?")
 
     if (!isNaN(pushmoney) && pushmoney > 0) {
         loggedInUser.balance = loggedInUser.balance + pushmoney
-        alert(`Deposit successful! Your new balance is: ${loggedInUser.balance} DH`)
+        alert(`Deposit successful !!! Your new balance is: ${loggedInUser.balance} $`)
     } else {
-        alert("Invalid amount, try again.")
+        alert("Invalid , try again.")
     }
 }
 }
