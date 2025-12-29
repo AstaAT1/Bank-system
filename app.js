@@ -1,40 +1,3 @@
-// let data = []
-// let special = /[!@#$%^&*()\-+={}[\]:;"'<>,.?\/|\\]/
-
-// let askUser = prompt("Log In || Sign Up || Reset Password")
-// if (askUser == "sign up"){
-//     let fullname = prompt("What is your Name (Full)")
-//     if (fullname.length < 5) {
-//          alert("your name is incorrect , try again")
-//     }
-
-//     else if (special.test(fullname)){
-//         alert("your name is incorrect , try again")
-//     }
-// }
-
-
-// function capitalized(c) {
-//   return c.split(" ").map(char => {
-//     return char.charAt(0).toUpperCase() + char.slice(1).toLowerCase();
-//   }).join(" ");
-// }
-
-
-
-// .Trim()
-
-
-// .toLowerCase()  || for email
-// let email = prompt("Can you entre your email")
-// if( !email.includes("@") ){
-//     alert("email is incorrect , try again")
-// }
-
-// // Example usage:
-// const input = "hello woRld thIs is a test";
-// const result = capitalizeEachWord(input);
-// console.log(result); // Output: "Hello WoRld ThIs Is A Test"
 
 let users = []
 
@@ -122,27 +85,27 @@ function validatePassword(password) {
 // .............
 let askUser = prompt("Log In || Sign Up || Reset Password")
 
-if (askUser.toLowerCase() === "sign up") {
+if (askUser.toLowerCase() == "sign up") {
 
 
 
     let fullName = null
-    while (fullName === null) {
+    while (fullName == null) {
         fullName = validateFullName(prompt("Full Name"))
     }
 
     let email = null
-    while (email === null) {
+    while (email == null) {
         email = validateEmail(prompt("Email"))
     }
 
     let age = null
-    while (age === null) {
+    while (age == null) {
         age = validateAge(prompt("Age"))
     }
 
     let password = null
-    while (password === null) {
+    while (password == null) {
         password = validatePassword(prompt("Password"))
     }
     let confirm = prompt("Confirm Password")
@@ -158,14 +121,14 @@ if (askUser.toLowerCase() === "sign up") {
 }
 let askUserv3 = prompt("Log In || Sign Up || Reset Password")
 
-if (askUserv3.toLowerCase() === "reset password") {
+if (askUserv3.toLowerCase() == "reset password") {
     let verify = prompt("Enter your email to change your password")
-    let reset = users.find(u => u.email === verify)
+    let reset = users.find(u => u.email == verify)
 
     if (reset) {
-
+// darori darori taktab email sghira matansach (hitach rah fi lwl radinah sghir)30min X
         let newPassword = null
-        while (newPassword === null) {
+        while (newPassword == null) {
             newPassword = validatePassword(prompt("Enter your new password"))
         }
 
@@ -179,7 +142,7 @@ if (askUserv3.toLowerCase() === "reset password") {
 
 let askUserv2 = prompt("Log In || Sign Up || Reset Password")
 
-if (askUserv2.toLowerCase() === "log in") {
+if (askUserv2.toLowerCase() == "log in") {
 
     let loggedInUser = null
 
@@ -187,7 +150,7 @@ if (askUserv2.toLowerCase() === "log in") {
         let checkEmail = prompt("Enter your email").trim().toLowerCase()
         let checkPassword = prompt("Enter your password").trim()
 
-        loggedInUser = users.find(user => user.email === checkEmail && user.password === checkPassword)
+        loggedInUser = users.find(user => user.email == checkEmail && user.password == checkPassword)
 
         if (!loggedInUser) {
             alert("Email or password not correct, try again")
@@ -195,8 +158,19 @@ if (askUserv2.toLowerCase() === "log in") {
             alert(`Mar7ba bik ${loggedInUser.fullname} !!!`)
         }
     }
-    alert(`This is your Balance in your account 0$`)
-    let choose = prompt("choose what do you want :\n Withdraw Money\n Deposit Money\n Take a loan\n Invest\n")
+    alert(`This is your Balance in your account: ${loggedInUser.balance} DH`)
 
+let choose = prompt("Choose what do you want:\nDeposit Money\nWithdraw Money\nTake a loan\nInvest\n")
+
+if (choose.toLowerCase() === "deposit money") {
+    let pushmoney = Number(prompt("How much money do you want to deposit?"))
+
+    if (!isNaN(pushmoney) && pushmoney > 0) {
+        loggedInUser.balance = loggedInUser.balance + pushmoney
+        alert(`Deposit successful! Your new balance is: ${loggedInUser.balance} DH`)
+    } else {
+        alert("Invalid amount, try again.")
+    }
+}
 }
 
